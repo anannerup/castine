@@ -1,0 +1,32 @@
+{
+  "name": "Castine",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install",
+    "clean": "rm -rf dist",
+    "serve": "http-server . -p 5556",
+    "build": "npm run clean && tsc",
+    "build_prod": "npm run build && browserify -s main dist/main.js > dist/bundle.js && npm run minify",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "2.0.0-beta.13",
+    "systemjs": "0.19.25",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.6.6"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.1.0",
+    "typescript": "^1.8.9",
+    "typings":"^0.7.11"
+  }
+}
